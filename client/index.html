@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+  <head>
+  
+    <title>Input/Output</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+    
+      .red {
+        background-color: rgb(255, 0, 0);
+        color: rgb(255, 255, 255);
+      }
+      .yellow {
+        background-color: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+      }
+      .blue {
+        background-color: rgb(0, 0, 255);
+        color: rgb(255, 255, 255);
+      }
+      
+    </style>
+    
+  </head>
+  
+  <body>
+
+    <h1>Input/output</h1>
+
+    <div id="messages">
+    </div>
+          
+    <form id="message-form" action='#'>
+      <input type="text" id="your-name" placeholder="Your Name"></div>
+      <select id="your-color">
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="blue">Blue</option>
+      </select>
+      <input type="text" id="your-text" placeholder="Message">
+      <input type="submit" value="Send">
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    
+    <script>
+
+      // Configure Socket.IO websocket
+      var socket = io.connect();
+
+      var messages = [];
+
+      // Listen for websocket events of type 'message'
+      socket.on('message', function (msg) {
+        messages.push(msg);
+        $('#messages').append('<div class="' + msg.color + '">' + 
+                                msg.name + ': ' +
+                                msg.text +
+                                '</div>');
+      });
+
+      // When you submit the form...
+      $('#message-form').submit(function(e) {
+        
+        // Build the message from the form's input elements
+        var yourMessage = {
+          name: $('#your-name').val(),
+          text: $('#your-text').val(),
+          color: $('#your-color').val()
+        };
+        
+        console.log('Sending message:', yourMessage);
+        
+        // Send the message
+        socket.emit('message', yourMessage);
+        
+        // Clear the text element of form
+        $('#your-text').val('');
+        
+        // Stop the form from actually submitting
+        e.preventDefault();
+        
+      });
+
+    </script>
+  </body>
+</html>
