@@ -43,7 +43,7 @@
       <input type="text" id="your-text" placeholder="Message">
       <input type="submit" value="Send">
     </form>
-
+    
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/jquery.min.js"></script>
     
@@ -52,35 +52,38 @@
       // Configure Socket.IO websocket
       var socket = io.connect();
 
-      var messages = [];
-
       // Listen for websocket events of type 'message'
-      socket.on('message', function (msg) {
-        messages.push(msg);
-        $('#messages').append('<div class="' + msg.color + '">' + 
-                                msg.name + ': ' +
-                                msg.text +
+      socket.on('message', function(message) {
+        
+        console.log('Received message: ', message);
+        
+        // Here we transform the message for presentation
+        $('#messages').append('<div class="' + message.color + '">' + 
+                                message.name + ': ' +
+                                message.text +
                                 '</div>');
+                                
       });
 
       // When you submit the form...
-      $('#message-form').submit(function(e) {
+      $('#message-form').on('submit', function(e) {
         
         // Build the message from the form's input elements
-        var yourMessage = {
+        // Here we could transform the message before sending to the server
+        var newMessage = {
           name: $('#your-name').val(),
           text: $('#your-text').val(),
           color: $('#your-color').val()
         };
         
-        console.log('Sending message:', yourMessage);
+        console.log('Sending message:', newMessage);
         
         // Send the message
-        socket.emit('message', yourMessage);
+        socket.emit('message', newMessage);
         
         // Clear the text element of form
         $('#your-text').val('');
-        
+
         // Stop the form from actually submitting
         e.preventDefault();
         
