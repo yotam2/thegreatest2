@@ -19,10 +19,13 @@ var io = socketio.listen(server);
 // Global variables
 var sockets = [];
 
+// Connect to the database; nothing else should happen until that connection is established.
 MongoClient.connect('mongodb://networks:yalent@ds033069.mongolab.com:33069/networks', function(err, db) {
     if (err) throw err;
     
-    // Get a reference to the messages collection in the database
+    // Get a reference to the "messages" collection in the database.
+    // If this collection doesn't already exist in the db, it will be created automatically
+    // the first time it's needed.
     var messages = db.collection('messages');
     
     // Whenever a new client connects
@@ -38,12 +41,15 @@ MongoClient.connect('mongodb://networks:yalent@ds033069.mongolab.com:33069/netwo
       });
       
       // Send this client a list of all messages so far, by querying the database
-      // and going through each result.
+      // (getting all documents in the "messages" collection) and going through each result.
+      // Sort by the "time" field. The 1 means ascending order. Use -1 for descending.
       messages.find().sort({time: 1}).each(function(err, message) {
          if (err) throw err;
-         
-         socket.emit('message', message);
-         
+         // An idiosyncracy of Mongo is that the last result will always be null.
+         // Ignore that one. 
+         if (message != null) {
+           socket.emit('message', message);
+         }
       });
     
       // Listen for when this client sends a message
