@@ -6,6 +6,17 @@
         <link href='https://fonts.googleapis.com/css?family=Anton'
         rel='stylesheet' type='text/css'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+			function validateForm()
+			{
+			var x=document.forms["MyForm"]["greatest"].value;
+			if (x==null || x=="")
+			  {
+			  alert("WHAT IS THE GREATEST THING IN THE WORLD?");
+			  return false;
+			  }
+			}
+        </script>
         <style>
             body {
                 font-family:'Anton';
@@ -35,7 +46,7 @@
             <br/>the greatest Thing
             <br/>in the World?</h1>
 
-        <form action='/list' method="post">
+        <form name="MyForm" action='/list' method="post" onsubmit="return validateForm()" >
             <input type="text" name="greatest" id="greatest-input" placeholder=" " autofocus maxlength=20 
             onblur="" ="javascript:this.value=this.value.toUpperCase()"
             onkeydown="javascript:this.value=this.value.toUpperCase()" 
