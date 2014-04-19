@@ -36,7 +36,11 @@
             <br/>in the World?</h1>
 
         <form action='/list' method="post">
-            <input type="text" name="greatest" id="greatest-input" placeholder=" " autofocus maxlength=20 onkeydown="javascript:this.value=this.value.toUpperCase()">
+            <input type="text" name="greatest" id="greatest-input" placeholder=" " autofocus maxlength=20 
+            onblur="" ="javascript:this.value=this.value.toUpperCase()"
+            onkeydown="javascript:this.value=this.value.toUpperCase()" 
+            onkeyup="javascript:this.value=this.value.toUpperCase()" 
+            onkeypress="javascript:this.value=this.value.toUpperCase()" >
             <br/>
             <input type="submit" value="Submit">
         </form>
