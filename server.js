@@ -86,9 +86,9 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
             
                         console.log(urlStringz);
                         console.log('-------------------');
-                        console.log(urlStringz[0]);
+                        console.log(urlStringz[1]);
                         // Render the view
-                        res.render('list', {list: list, total_votes: total_votes, urlString:urlStringz[0] });
+                        res.render('list', {list: list, total_votes: total_votes, urlString:urlStringz[1] });
                     }
                 });
                 
@@ -143,9 +143,9 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
             
                         console.log(urlStringz);
                         console.log('-------------------');
-                        console.log(urlStringz[0]);
+                        console.log(urlStringz[1]);
                         // Render the view
-                        res.render('list', {list: list, total_votes: total_votes, urlString:urlStringz[0] });
+                        res.render('list', {list: list, total_votes: total_votes, urlString:urlStringz[1] });
                     }
                 });
                                 
