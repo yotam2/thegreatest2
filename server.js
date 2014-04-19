@@ -122,7 +122,7 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
                 
                 //https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=pizza
 
-                request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=' + list[0].name,
+                request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&rsz=1&q=' + list[0].name,
                 
                 function(error, response, body) {
             
