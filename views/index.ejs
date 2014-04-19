@@ -36,7 +36,7 @@
             <br/>in the World?</h1>
 
         <form action='/list' method="post">
-            <input type="text" name="greatest" id="greatest-input" placeholder=" " autofocus maxlength=20 >
+            <input type="text" name="greatest" id="greatest-input" placeholder=" " autofocus maxlength=20 onBlur="this.value=this.value.toUpperCase()">
             <br/>
             <input type="submit" value="Submit">
         </form>
