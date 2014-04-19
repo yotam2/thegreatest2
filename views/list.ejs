@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet'
+        type='text/css'>
+        <style>
+            body {
+                text-transform:uppercase;
+                font-family:'Anton';
+                margin:0;
+                background:blue;
+                background-image: url("<%= urlString %>");
+                background-blend-mode:screen;
+                background-position: 50% 50%;
+                background-size:100%;
+                animation: animatedBackground 60s alternate infinite;
+                -ms-animation: animatedBackground 60s alternate infinite;
+                -moz-animation: animatedBackground 60s alternate infinite;
+                -webkit-animation: animatedBackground 60s alternate infinite;
+            }
+            @-webkit-keyframes animatedBackground {
+                from {
+                    background-size:20%;
+                }
+                to {
+                    background-size:300%;
+                }
+            }
+            @-webkit-keyframes animatedBackground {
+                from {
+                    background-size:20%;
+                }
+                to {
+                    background-size:300%;
+                }
+            }
+            #bg {
+                top:0;
+                position:absolute;
+                z-index:-9;
+            }
+            header {
+                font-family:"courier new";
+                font-weight: bold;
+                font-size:15px;
+                width:100%;
+                color:black;
+                line-height:160%;
+                position:fixed;
+                margin-left:6%;
+                top:0;
+                letter-spacing: 3px;
+            }
+            ol li:before {
+                content: counter(customlistcounter)" ";
+                counter-increment: level1;
+                font-family:"courier new";
+                font-weight: bold;
+                font-size: 15px;
+                color: black;
+                margin-left: -2%;
+                position: absolute;
+                letter-spacing: 3px;
+            }            
+            ol {
+                width:70%;
+                font-size:720%;
+                line-height:95%;
+                margin:5% 0 0 8%;
+                padding:0;
+                list-style-type:none;
+                color:red;
+                z-index:999;
+                mix-blend-mode: multiply;
+            }
+            .votes {
+                display: inline;
+                font-family:"courier new";
+                font-weight: bold;
+                font-size: 15px;
+                color: black;
+                margin-left: 2%;
+                position: absolute;
+                letter-spacing: 3px;
+            }
+            li {
+                counter-increment: customlistcounter;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <header>The Greatest Things in the World - A List by the Internet</header>
+        
+        <ol>
+            <% list.forEach(function(greatest) { %>
+                
+                <!--<% console.log(list); %>-->
+                
+                <li><%= greatest.name %><div class="votes"><%= Math.round(greatest.percent) %>% · <%= greatest.votes %> Votes</div></li>
+                
+            <% }); %>
+
+        </ol>
+        
+    </body>
+
+</html>

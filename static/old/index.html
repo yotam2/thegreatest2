@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>What is The Greatest Thing in The World?</title>
+        <link href='https://fonts.googleapis.com/css?family=Anton'
+        rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                text-transform:uppercase;
+                font-family:'Anton';
+                margin-left:6%;
+            }
+            h1 {
+                font-size:720%;
+                line-height:95%;
+                margin:5% 0 0 0;
+            }
+            #greatest-input {
+                font-family:'Anton';
+                font-size:720%;
+                width:90%;
+                text-transform:uppercase;
+                color:blue;
+                border:none;
+                outline:none;
+                /*background-color:lightgray;*/
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1>What is
+            <br/>the greatest Thing
+            <br/>in the World?</h1>
+        <div id="messages"></div>
+        <form id="messages-form" action='#'>
+            <input type="text" id="greatest-input" placeholder=" " autofocus maxlength=20>
+            </div>
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script>
+            // Configure Socket.IO websocket
+            var socket = io.connect();
+
+            // Listen for websocket events of type 'message'
+            socket.on('message', function(message) {
+
+                console.log('Received message: ', message);
+
+                // Here we transform the message for presentation
+                $('#messages').append('<div class="' + message.color + '">' + message.name + ': ' + message.text + '</div>');
+
+            });
+
+            // When you submit the form...
+            $('#message-form').on('submit', function(e) {
+
+                // Build the message from the form's input elements
+                // Here we could transform the message before sending to the server
+                var newMessage = {
+                    text: $('#your-text').val(),
+                };
+
+                console.log('Sending message:', newMessage);
+
+                // Send the message
+                socket.emit('message', newMessage);
+
+                // Clear the text element of form
+                $('#your-text').val('');
+
+                // Stop the form from actually submitting
+                e.preventDefault();
+
+            });
+        </script>
+    </body>
+
+</html>

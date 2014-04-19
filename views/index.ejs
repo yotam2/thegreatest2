@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>What is The Greatest Thing in The World?</title>
+        <link href='https://fonts.googleapis.com/css?family=Anton'
+        rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family:'Anton';
+                margin-left:6%;
+            }
+            h1 {
+                text-transform:uppercase;
+                font-size:720%;
+                line-height:95%;
+                margin:5% 0 0 0;
+            }
+            #greatest-input {
+                font-family:'Anton';
+                font-size:720%;
+                width:90%;
+                text-transform:uppercase;
+                color:blue;
+                border:none;
+                outline:none;
+                /*background-color:lightgray;*/
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1>What is
+            <br/>the greatest Thing
+            <br/>in the World?</h1>
+
+        <form action='/list' method="post">
+            <input type="text" name="greatest" id="greatest-input" placeholder=" " autofocus maxlength=20 >
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+
+</html>
+<!--https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=pizza</p>-->
+<!--https://www.googleapis.com/customsearch/v1?key=AIzaSyC25-sRFLuLqdEWGJ3r2jvxB47_318uB1A&cx=012213439044969086127:9hwplduxytq&q=pizza&imgColorType=mono&searchType=image-->
