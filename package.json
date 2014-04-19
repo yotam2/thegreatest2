@@ -1,12 +1,28 @@
 {
-  "name": "input-output",
+  "name": "thegreatest2",
   "version": "0.0.0",
-  "description": "First example of the input-output project in Art742b",
+  "description": "Networks & Transactions",
   "main": "server.js",
-  "repository": "",
-  "author": "Dan Michaelson <dan.michaelson@yale.edu>",
   "dependencies": {
-    "express": "~3.2.4",
-    "socket.io": "~0.9.14"
-  }
+    "ejs": "~1.0.0",
+    "express": "~3.2.6",
+    "mongodb": "~1.3.23",
+    "request": "~2.34.0",
+    "socket.io": "~0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yotam2/thegreatest2.git"
+  },
+  "author": "Yotam Hadar with D. Michaelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yotam2/thegreatest2/issues"
+  },
+  "homepage": "https://github.com/yotam2/thegreatest2"
 }
