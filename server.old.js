@@ -61,9 +61,8 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
                     });
                 }
                 
-                var urlStringz1 = [];                
-                var urlStringz2 = [];
-
+                var urlStringz = [];
+                
                 //https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=pizza
 
                 request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=' + list[0].name,
@@ -71,7 +70,6 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
                 function(error, response, body) {
             
                     if (!error && response.statusCode == 200) {
-                    	//getting the image for the top result
                         console.log('-----------------------------------');
                         console.log(list[0].name);
                         console.log('-----------------------------------');
@@ -82,43 +80,15 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
                         imgResults.forEach(function(result) {
                             if (result.url) {
                                 console.log(result.url);
-                                urlStringz1.push(result.url);
+                                urlStringz.push(result.url);
                             }
                         });
             
-                        console.log(urlStringz1);
+                        console.log(urlStringz);
                         console.log('-------------------');
-                        console.log(urlStringz1[0]);
-
-		                request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=' + name,
-		                
-		                function(error, response, body) {
-                    	//getting the image for the last submission
-		            
-		                    if (!error && response.statusCode == 200) {
-		                        console.log('-----------------------------------');
-		                        console.log(name);
-		                        console.log('-----------------------------------');
-		                        console.log(body);
-		                        var imgResults = JSON.parse(body).responseData.results;
-		                        console.log(imgResults);
-		                            
-		                        imgResults.forEach(function(result) {
-		                            if (result.url) {
-		                                console.log(result.url);
-		                                urlStringz2.push(result.url);
-		                            }
-		                        });
-		            
-		                        console.log(urlStringz2);
-		                        console.log('-------------------');
-		                        console.log(urlStringz2[0]);
-		                        // Render the view
-		                        res.render('list', {list: list, total_votes: total_votes, urlString:urlStringz1[0],urlString:urlStringz2[0] //the url for the last submissiion img });
-		                    }
-		                });
-
-
+                        console.log(urlStringz[1]);
+                        // Render the view
+                        res.render('list', {list: list, total_votes: total_votes, urlString:urlStringz[1] });
                     }
                 });
                 
