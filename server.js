@@ -92,27 +92,27 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
 
 		                request('https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=' + name,
 		                
-		                function(error, response, body) {
-                    	//getting the image for the last submission
+		                // function(error, response, body) {
+                  //   	//getting the image for the last submission
 		            
-		                    if (!error && response.statusCode == 200) {
-		                        console.log('-----------------------------------');
-		                        console.log(name);
-		                        console.log('-----------------------------------');
-		                        console.log(body);
-		                        var imgResults = JSON.parse(body).responseData.results;
-		                        console.log(imgResults);
+		                //     if (!error && response.statusCode == 200) {
+		                //         console.log('-----------------------------------');
+		                //         console.log(name);
+		                //         console.log('-----------------------------------');
+		                //         console.log(body);
+		                //         var imgResults = JSON.parse(body).responseData.results;
+		                //         console.log(imgResults);
 		                            
-		                        imgResults.forEach(function(result) {
-		                            if (result.url) {
-		                                console.log(result.url);
-		                                urlStringz2.push(result.url);
-		                            }
-		                        });
+		                //         imgResults.forEach(function(result) {
+		                //             if (result.url) {
+		                //                 console.log(result.url);
+		                //                 urlStringz2.push(result.url);
+		                //             }
+		                //         });
 		            
-		                        console.log(urlStringz2);
-		                        console.log('-------------------');
-		                        console.log(urlStringz2[0]);
+		                //         console.log(urlStringz2);
+		                //         console.log('-------------------');
+		                //         console.log(urlStringz2[0]);
 		                        // Render the view
 		                        res.render('list', {list: list, total_votes: total_votes, urlStringz1:urlStringz1[0],urlStringz2:urlStringz2[0] //the url for the last submissiion img });
 		                    }
