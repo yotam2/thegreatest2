@@ -178,7 +178,7 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
 
 
                                 // Render the view
-                                res.render('list', {list: list, total_votes: total_votes, urlString1:urlStringz1[0] });//the url for the last submissiion img });
+                                res.render('list', {list: list, total_votes: total_votes, urlString1:urlStringz1[0], urlString2:0 });//the url for the last submissiion img });
                             }
                         });
                                                     
