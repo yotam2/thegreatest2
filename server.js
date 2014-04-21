@@ -148,7 +148,7 @@ MongoClient.connect('mongodb://yotam:monodb444@ds033069.mongolab.com:33069/yotam
                     });
                 }
 
-                var urlStringz = [];
+                var urlStringz1 = [];                
                 
                 //https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgc=mono&q=pizza
 
