@@ -10,7 +10,11 @@
                 font-family:'Anton';
                 margin:0;
                 background:red;
-                background-image: url("<%= urlString1 %>"), url("<%= urlString2 %>");
+                <% if(urlString2) { %>
+                    background-image: url("<%= urlString1 %>"), url("<%= urlString2 %>");
+                <% } else { %>
+                    background-image: url("<%= urlString1 %>");
+                <% } %>
                 background-blend-mode:screen, difference;
                 background-position: 50% 50%;
                 background-size:100%;
