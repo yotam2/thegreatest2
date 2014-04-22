@@ -15,7 +15,7 @@
                 <% } else { %>
                     background-image: url("<%= urlString1 %>");
                 <% } %>
-                background-blend-mode:difference, multiply;
+                background-blend-mode:multiply;
                 background-position: 50% 50%;
                 background-size:100%, 100%;
                 animation: animatedBackground 120s alternate infinite;
@@ -67,9 +67,9 @@
                 margin:5% 0 0 8%;
                 padding:0;
                 list-style-type:none;
-                color:red;
+                color:cyan;
                 z-index:999;
-                mix-blend-mode: multiply;
+                mix-blend-mode: difference;
             }
             .votes {
                 display: inline;
