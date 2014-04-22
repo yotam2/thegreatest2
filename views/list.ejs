@@ -9,13 +9,13 @@
                 text-transform:uppercase;
                 font-family:'Anton';
                 margin:0;
-                background:red;
+                background:teal;
                 <% if(urlString2!=0) { %>
                     background-image: url("<%= urlString1 %>"), url("<%= urlString2 %>");
                 <% } else { %>
                     background-image: url("<%= urlString1 %>");
                 <% } %>
-                background-blend-mode:screen, difference;
+                background-blend-mode:overlay, difference;
                 background-position: 50% 50%;
                 background-size:100%;
                 animation: animatedBackground 60s alternate infinite;
@@ -74,7 +74,7 @@
                 margin:5% 0 0 8%;
                 padding:0;
                 list-style-type:none;
-                color:red;
+                color:blue;
                 z-index:999;
                 mix-blend-mode: multiply;
             }
