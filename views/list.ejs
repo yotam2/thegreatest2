@@ -9,36 +9,29 @@
                 text-transform:uppercase;
                 font-family:'Anton';
                 margin:0;
-                background:teal;
+                background-color:red;
                 <% if(urlString2!=0) { %>
                     background-image: url("<%= urlString1 %>"), url("<%= urlString2 %>");
                 <% } else { %>
                     background-image: url("<%= urlString1 %>");
                 <% } %>
-                background-blend-mode:overlay, difference;
+                background-blend-mode:difference, multiply;
                 background-position: 50% 50%;
-                background-size:100%;
-                animation: animatedBackground 60s alternate infinite;
-                -ms-animation: animatedBackground 60s alternate infinite;
-                -moz-animation: animatedBackground 60s alternate infinite;
-                -webkit-animation: animatedBackground 60s alternate infinite;
+                background-size:100%, 100%;
+                animation: animatedBackground 120s alternate infinite;
+                -ms-animation: animatedBackground 120s alternate infinite;
+                -moz-animation: animatedBackground 120s alternate infinite;
+                -webkit-animation: animatedBackground 120s alternate infinite;
             }
             @-webkit-keyframes animatedBackground {
                 from {
-                    background-size:20%;
+                    background-size:33%, 200%;
                 }
                 to {
-                    background-size:300%;
+                    background-size:300%, 50%;
                 }
             }
-            @-webkit-keyframes animatedBackground {
-                from {
-                    background-size:20%;
-                }
-                to {
-                    background-size:300%;
-                }
-            }
+
             #bg {
                 top:0;
                 position:absolute;
